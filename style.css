@@ -25,6 +25,8 @@ align-items: center;
 width: 100%;
 max-width: 420px;
 padding: 20px;
+display: flex;
+flex-direction: column;
 }
 
 /* CARD STYLE */
@@ -193,16 +195,14 @@ width: 100%;
 height: 100%;
 }
 
-body {
-display: block !important;   /* 🔥 FORCE remove flex */
-background: #ffffff !important;
-}
-
 .holder {
 width: 100%;
 max-width: none;
 height: 100%;
-padding: 5px;
+padding: 10%;
+column-gap: 20px;
+justify-content: center;
+
 }
 
 .phone, .search {
@@ -213,13 +213,13 @@ box-shadow: none;
 }
 
 .phone {
-min-height: 60vh;   /* fills upper screen */
+/* min-height: 60vh; */
 padding: 20px;
 }
 
 .search {
-min-height: 40vh;   /* fills lower screen */
-padding: 20px;
+/* min-height: 40vh; */
+padding: 10px;
 border-top: 1px solid #eee;
 }
 
