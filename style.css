@@ -1,85 +1,247 @@
+/* RESET */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Roboto, sans-serif;
+  }
+
+html, body {
+width: 100%;
+height: 100%;
+}
+
+/* BODY */
 body {
-  font-family: Arial;
-  display: flex;
-  justify-content: center;
-  margin-top: 50px;
+background: linear-gradient(135deg, #e3f2fd, #e8f5e9);
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+/* MAIN CONTAINER */
+.holder {
+width: 100%;
+max-width: 420px;
+padding: 20px;
+}
+
+/* CARD STYLE */
+.phone, .search {
+background: #ffffff;
+border-radius: 18px;
+padding: 25px;
+margin-bottom: 20px;
+box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+transition: 0.3s;
+}
+
+.phone:hover, .search:hover {
+transform: translateY(-2px);
+}
+
+/* HEADER */
+.phone h2 {
+text-align: center;
+margin-bottom: 15px;
+color: #2e7d32;
+font-weight: 600;
+}
+
+/* INPUTS */
+input {
+width: 100%;
+padding: 13px;
+margin-top: 12px;
+border-radius: 10px;
+border: 1px solid #ddd;
+outline: none;
+font-size: 14px;
+transition: 0.2s;
+}
+
+input:focus {
+border-color: #4caf50;
+box-shadow: 0 0 0 2px rgba(76,175,80,0.15);
+}
+
+/* BUTTONS */
+button {
+width: 100%;
+padding: 13px;
+margin-top: 15px;
+border-radius: 10px;
+border: none;
+font-weight: bold;
+cursor: pointer;
+transition: 0.25s;
+}
+
+/* PRIMARY */
+.but {
+background: #4caf50;
+color: white;
+}
+
+.but:hover {
+background: #43a047;
+}
+
+/* SEARCH */
+.search-button {
+background: #64b5f6;
+color: white;
+}
+
+.search-button:hover {
+background: #42a5f5;
+}
+
+/* MODAL */
+.modal {
+display: none;
+position: fixed;
+inset: 0;
+background: rgba(0,0,0,0.45);
+justify-content: center;
+align-items: center;
+backdrop-filter: blur(4px);
+}
+
+/* MODAL BOX */
+.modal-content {
+background: #ffffff;
+padding: 30px;
+border-radius: 18px;
+width: 90%;
+max-width: 360px;
+text-align: center;
+animation: scaleIn 0.25s ease;
+}
+
+/* TEXT */
+.modal-content h3 {
+margin-bottom: 12px;
+color: #333;
+}
+
+.modal-content p {
+margin: 8px 0;
+color: #555;
+font-size: 14px;
+}
+
+/* TOKEN */
+#token {
+margin-top: 12px;
+padding: 12px;
+background: #e8f5e9;
+border-radius: 10px;
+font-weight: bold;
+letter-spacing: 2px;
+color: #2e7d32;
+font-size: 16px;
+word-break: break-all;
+}
+
+/* BUTTON GROUP */
+.buttons {
+display: flex;
+gap: 10px;
+margin-top: 20px;
+}
+
+/* CANCEL */
+.cancel {
+background: #e0e0e0;
+}
+
+.cancel:hover {
+background: #d5d5d5;
+}
+
+/* BUY */
+.buy {
+background: #4caf50;
+color: white;
+}
+
+.buy:hover {
+background: #388e3c;
+}
+
+/* ANIMATION */
+@keyframes scaleIn {
+from {
+transform: scale(0.85);
+opacity: 0;
+}
+to {
+transform: scale(1);
+opacity: 1;
+}
+}
+
+/* ========================= */
+/* 📱 MOBILE (FULL SCREEN) */
+/* ========================= */
+
+@media (max-width: 850px) {
+html, body {
+width: 100%;
+height: 100%;
+}
+
+body {
+display: block !important;   /* 🔥 FORCE remove flex */
+background: #ffffff !important;
+}
+
+.holder {
+width: 100%;
+max-width: none;
+height: 100%;
+padding: 5px;
+}
+
+.phone, .search {
+width: 100%;
+margin: 0;
+border-radius: 0;
+box-shadow: none;
 }
 
 .phone {
-  border: 2px solid black;
-  padding: 20px;
-  width: 300px;
-  text-align: center;
+min-height: 60vh;   /* fills upper screen */
+padding: 20px;
 }
 
 .search {
-  width: 341px;
-  display: flex;
+min-height: 40vh;   /* fills lower screen */
+padding: 20px;
+border-top: 1px solid #eee;
 }
 
-.token-in{
-  width: 75%;
-}
-.search-button{
-  width: 25%;
+/* Make modal also full */
+.modal {
+align-items: flex-end; /* like mobile sheet */
 }
 
-input {
-  width: 90%;
-  padding: 10px;
-  margin: 5px;
+.modal-content {
+width: 100%;
+max-width: none;
+border-radius: 20px 20px 0 0;
+}
 }
 
-button {
-  padding: 10px;
-  margin: 5px;
-  width: 98%;
-}
 
-#result {
-  margin-top: 15px;
-  font-weight: bold;
-}
-.modal{
-  display:none;
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  background:rgba(0,0,0,0.5);
-  justify-content:center;
-  align-items:center;
-}
+/* ========================= */
+/* 💻 LARGE SCREENS */
+/* ========================= */
 
-.modal-content{
-  background:white;
-  padding:20px;
-  border-radius:10px;
-  width:350px;
-  text-align:center;
+@media (min-width: 1200px) {
+.holder {
+max-width: 500px;
 }
-
-.buttons{
-  display:flex;
-  justify-content:space-between;
-  margin-top:15px;
-}
-
-.cancel{
-  background:gray;
-  color:white;
-  border: none;
-}
-.cancel:hover{
-  background:rgb(62, 57, 57);
-}
-
-.buy{
-  background:rgb(21, 176, 32);
-  color:white;
-  border: none;
-}
-.buy:hover{
-  background:rgb(8, 83, 13);
 }
