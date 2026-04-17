@@ -9,7 +9,7 @@ async function checkMeter() {
   if(!amount || !meterNumber){
     return alert("Please fill all");
   }
-
+  showLoader();
   try{
     const res = await fetch(BASE_URL + "/check-meter", {
       method: "POST",
@@ -24,6 +24,7 @@ async function checkMeter() {
       return;
     }
 
+    hideLoader()
     document.getElementById("m_meter").innerText = "Meter: " + meterNumber;
     document.getElementById("m_user").innerText = "User: " + data.user;
     document.getElementById("m_amount").innerText = "Amount: " + amount + " RWF";
@@ -39,6 +40,8 @@ async function buyWater(){
   const meterNumber = document.getElementById("meterNumber").value;
   const amount = document.getElementById("amount").value;
 
+  showLoader();
+
   try{   
     const res = await fetch(BASE_URL + "/buy", {
       method: "POST",
@@ -53,6 +56,7 @@ async function buyWater(){
       return;
     }
 
+    hideLoader()
     document.getElementById("content").innerHTML = `
           <h3>Payment successful with token:</h3>
           <p id="token">${data.token}</p>
@@ -75,6 +79,12 @@ async function getLastToken(){
 
   const meterNumber = document.getElementById("meterNumberSearch").value;
 
+  if(!meterNumber){
+    return alert("Enter meter number")
+  }
+
+  showLoader();
+
   try{   
     const res = await fetch(BASE_URL + "/last-token", {
       method: "POST",
@@ -88,6 +98,7 @@ async function getLastToken(){
       alert(data.message);
       return;
     }
+    hideLoader()
     document.getElementById("modal").style.display = "flex";
     document.getElementById("content").innerHTML = `
           <h3>Last token for ${meterNumber} :</h3>
@@ -128,4 +139,12 @@ function copyToken() {
       document.getElementById("copy").innerHTML = "COPIED";
     })
     .catch(err => console.error(err));
+}
+
+function showLoader() {
+  document.getElementById("loader").style.display = "flex";
+}
+
+function hideLoader() {
+  document.getElementById("loader").style.display = "none";
 }
