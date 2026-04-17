@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Water USSD</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="phone">
+  <h2>*373# Water Service</h2>
+  <input type="number" id="meterNumber" placeholder="Enter Meter Number" required>
+  <input type="number" id="amount" placeholder="Enter Amount" required>
+  <button onclick="checkMeter()">Continue</button> 
+</div>
+
+<div id="modal" class="modal">
+  <div id="content" class="modal-content">
+    <h3>Confirm Payment</h3>
+    <p id="m_meter"></p>
+    <p id="m_user"></p>
+    <p id="m_amount"></p>
+
+    <div class="buttons">
+      <button class="cancel" onclick="closeModal()">Cancel</button>
+      <button class="buy" onclick="buyWater()">Pay</button>
+    </div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
