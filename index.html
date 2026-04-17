@@ -1,16 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Water USSD</title>
+  <title>WeSmart</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-<div class="phone">
-  <h2>*373# Water Service</h2>
-  <input type="number" id="meterNumber" placeholder="Enter Meter Number" required>
-  <input type="number" id="amount" placeholder="Enter Amount" required>
-  <button onclick="checkMeter()">Continue</button> 
+<div class="holder">
+  <div class="phone">
+    <h2>*373# Water Service</h2>
+    <input type="number" id="meterNumber" placeholder="Enter Meter Number">
+    <input type="number" id="amount" placeholder="Enter Amount">
+    <button onclick="checkMeter()">Continue</button> 
+  </div>
+  <div class="search">
+    <input type="number" id="meterNumberSearch" placeholder="Enter to get last token" class="token-in">
+    <button class="search-button" onclick="getLastToken()">Search</button>
+  </div>
 </div>
 
 <div id="modal" class="modal">

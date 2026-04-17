@@ -69,6 +69,43 @@ async function buyWater(){
     console.log(error.message);
   }
 }
+
+
+async function getLastToken(){
+
+  const meterNumber = document.getElementById("meterNumberSearch").value;
+
+  try{   
+    const res = await fetch(BASE_URL + "/last-token", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({ meterNumber})
+    });
+
+    const data = await res.json();
+
+    if(!res.ok){
+      alert(data.message);
+      return;
+    }
+    document.getElementById("modal").style.display = "flex";
+    document.getElementById("content").innerHTML = `
+          <h3>Last token for ${meterNumber} :</h3>
+          <p id="token">${data.token}</p>
+          <div class="buttons">
+            <button id="copy" class="cancel" onclick="copyToken()">COPY TOKEN</button>
+            <button class="buy" onclick="closeModal()">OK</button>
+          </div>
+    `
+    document.getElementById("meterNumber").value="";
+    document.getElementById("amount").value="";
+    document.getElementById("meterNumberSearch").value="";
+
+  } catch(error){
+    alert("Error occured");
+    console.log(error.message);
+  }
+}
 function closeModal(){
   document.getElementById("modal").style.display = "none";
   document.getElementById("content").innerHTML = `
